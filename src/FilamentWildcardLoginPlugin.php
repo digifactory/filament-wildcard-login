@@ -1,15 +1,15 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace DigiFactory\FilamentWildcardLogin;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class SkeletonPlugin implements Plugin
+class FilamentWildcardLoginPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'skeleton';
+        return 'filament-wildcard-login';
     }
 
     public function register(Panel $panel): void
