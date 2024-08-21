@@ -4,6 +4,7 @@ namespace DigiFactory\FilamentWildcardLogin\Tests;
 
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
+use DigiFactory\FilamentWildcardLogin\FilamentWildcardLoginServiceProvider;
 use Filament\Actions\ActionsServiceProvider;
 use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
@@ -16,7 +17,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
-use DigiFactory\FilamentWildcardLogin\FilamentWildcardLoginServiceProvider;
 
 class TestCase extends Orchestra
 {
