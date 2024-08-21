@@ -11,5 +11,5 @@ return [
     'notification' => [
         'title' => 'Login link verstuurd naar :email!',
         'body' => 'Deze e-mail is geldig voor :expiration minuten.',
-    ]
+    ],
 ];

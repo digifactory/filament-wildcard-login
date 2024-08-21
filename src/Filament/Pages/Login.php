@@ -27,7 +27,7 @@ class Login extends BaseLogin
                 $domain = $email->afterLast('@');
 
                 $user = ($plugin->getModelClass())::query()
-                    ->where($plugin->getModelColumn(), 'LIKE', '%'.$domain)
+                    ->where($plugin->getModelColumn(), 'LIKE', '%' . $domain)
                     ->first();
 
                 if ($user) {
