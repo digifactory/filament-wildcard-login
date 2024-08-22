@@ -2,19 +2,15 @@
 
 namespace DigiFactory\FilamentWildcardLogin\Tests\Browser;
 
-use App\Models\FormSubmission;
 use DigiFactory\FilamentWildcardLogin\Filament\Pages\Login;
 use DigiFactory\FilamentWildcardLogin\Mail\WildcardLogin;
 use DigiFactory\FilamentWildcardLogin\Tests\TestCase;
-use Facebook\WebDriver\WebDriverBy;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use Laravel\Dusk\Browser;
 use Livewire\Livewire;
-use Tests\DuskTestCase;
 use Workbench\App\Models\User;
 
 class LoginPageTest extends TestCase
