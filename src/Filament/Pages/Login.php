@@ -3,12 +3,13 @@
 namespace DigiFactory\FilamentWildcardLogin\Filament\Pages;
 
 use DigiFactory\FilamentWildcardLogin\FilamentWildcardLoginPlugin;
-use DigiFactory\FilamentWildcardLogin\Notifications\WildcardLogin;
+use DigiFactory\FilamentWildcardLogin\Mail\WildcardLogin;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Component;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 use Filament\Notifications\Notification;
 use Filament\Pages\Auth\Login as BaseLogin;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 
@@ -46,7 +47,8 @@ class Login extends BaseLogin
                             $expiration,
                         );
 
-                        $user->notify(new WildcardLogin($loginUrl, $expiration->isoFormat('D MMMM YYYY HH:mm:ss')));
+                        Mail::to($email->toString())
+                            ->send(new WildcardLogin($loginUrl, $expiration->isoFormat('D MMMM YYYY HH:mm:ss')));
 
                         Notification::make()
                             ->title(__('filament-wildcard-login::wildcard-login.notification.title', ['email' => $email]))

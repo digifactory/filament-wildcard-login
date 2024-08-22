@@ -44,11 +44,14 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "DigiFactory\\FilamentWildcardLogin\\Tests\\": "tests/"
+            "DigiFactory\\FilamentWildcardLogin\\Tests\\": "tests/",
+            "Workbench\\App\\": "workbench/app/"
         }
     },
     "scripts": {
-        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "post-autoload-dump": [
+            "@php ./vendor/bin/testbench package:discover --ansi"
+        ],
         "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",

@@ -30,6 +30,10 @@
     <logging>
         <junit outputFile="build/report.junit.xml"/>
     </logging>
+    <php>
+        <env name="APP_KEY" value="base64:YKKyRjSJ7QmwcnJtkXCdIPKk3I2hFLMHJYo7DoXnwz8="/>
+        <env name="MAIL_MAILER" value="log"/>
+    </php>
     <source>
         <include>
             <directory suffix=".php">./src</directory>
