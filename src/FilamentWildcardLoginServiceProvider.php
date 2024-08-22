@@ -2,8 +2,6 @@
 
 namespace DigiFactory\FilamentWildcardLogin;
 
-use DigiFactory\FilamentWildcardLogin\Testing\TestsFilamentWildcardLogin;
-use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -40,13 +38,5 @@ class FilamentWildcardLoginServiceProvider extends PackageServiceProvider
         if (file_exists($package->basePath('/../resources/lang'))) {
             $package->hasTranslations();
         }
-    }
-
-    public function packageRegistered(): void {}
-
-    public function packageBooted(): void
-    {
-        // Testing
-        Testable::mixin(new TestsFilamentWildcardLogin);
     }
 }
