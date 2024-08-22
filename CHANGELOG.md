@@ -2,6 +2,6 @@
 
 All notable changes to `filament-wildcard-login` will be documented in this file.
 
-## 1.0.0 - 202X-XX-XX
+## 1.0.0 - 2024-08-22
 
-- initial release
+- Initial release
