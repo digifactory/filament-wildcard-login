@@ -94,7 +94,7 @@ class FilamentWildcardLoginPlugin implements Plugin
         return $this->domains;
     }
 
-    public function model(string $modelClass, string $modelColumn): static
+    public function model(string $modelClass, string $modelColumn = 'email'): static
     {
         $this->modelClass = $modelClass;
         $this->modelColumn = $modelColumn;
