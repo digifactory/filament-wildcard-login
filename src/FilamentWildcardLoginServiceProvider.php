@@ -22,7 +22,6 @@ class FilamentWildcardLoginServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package->name(static::$name)
-            ->hasCommands($this->getCommands())
             ->hasRoute('web')
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
@@ -49,21 +48,5 @@ class FilamentWildcardLoginServiceProvider extends PackageServiceProvider
     {
         // Testing
         Testable::mixin(new TestsFilamentWildcardLogin);
-    }
-
-    /**
-     * @return array<class-string>
-     */
-    protected function getCommands(): array
-    {
-        return [];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getRoutes(): array
-    {
-        return [];
     }
 }
