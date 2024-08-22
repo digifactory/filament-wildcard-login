@@ -11,9 +11,9 @@ class FilamentWildcardLoginPlugin implements Plugin
 {
     use EvaluatesClosures;
 
-    protected Closure|bool $enabled = true;
+    protected Closure | bool $enabled = true;
 
-    protected Closure|bool $loginDirectlyWithoutSendingEmail = false;
+    protected Closure | bool $loginDirectlyWithoutSendingEmail = false;
 
     /**
      * @var array<int, string>
@@ -54,7 +54,7 @@ class FilamentWildcardLoginPlugin implements Plugin
         return $plugin;
     }
 
-    public function enabled(Closure|bool $value = true): static
+    public function enabled(Closure | bool $value = true): static
     {
         $this->enabled = $value;
 
@@ -66,7 +66,7 @@ class FilamentWildcardLoginPlugin implements Plugin
         return $this->enabled;
     }
 
-    public function loginDirectlyWithoutSendingEmail(Closure|bool $value = true): static
+    public function loginDirectlyWithoutSendingEmail(Closure | bool $value = true): static
     {
         $this->loginDirectlyWithoutSendingEmail = $value;
 
@@ -79,13 +79,12 @@ class FilamentWildcardLoginPlugin implements Plugin
     }
 
     /**
-     * @param array<int, string> $domains
-     *
+     * @param  array<int, string>  $domains
      * @return $this
      */
     public function domains(array $domains): static
     {
-        $this->domains = array_map(fn($domain) => str_starts_with($domain, '@') ? $domain : '@' . $domain, $domains);
+        $this->domains = array_map(fn ($domain) => str_starts_with($domain, '@') ? $domain : '@' . $domain, $domains);
 
         return $this;
     }
