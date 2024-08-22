@@ -59,7 +59,7 @@ class AdminPanelProvider extends PanelProvider
                         'digifactory.nl',
                     ])
                     ->model(User::class)
-                    ->loginDirectlyWithoutSendingEmail(false && app()->environment('local')),
+                    ->loginDirectlyWithoutSendingEmail(app()->environment('local')),
             ])
             ->authMiddleware([
                 Authenticate::class,

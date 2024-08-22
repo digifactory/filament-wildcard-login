@@ -80,7 +80,11 @@ class LoginPageTest extends TestCase
             ->body->toBe('This e-mail is valid for 5 minutes.')
             ->title->toBe('Login link sent to mark@digifactory.nl!');
 
-        Mail::assertQueued(WildcardLogin::class, fn (WildcardLogin $mail) => expect($mail)->to->toBe([['name' => null, 'address' => 'mark@digifactory.nl']]));
+        Mail::assertQueued(WildcardLogin::class, function (WildcardLogin $mail) {
+            return expect($mail)
+                ->to->toBe([['name' => null, 'address' => 'mark@digifactory.nl']])
+                ->envelope()->subject->toBe('Login link Laravel');
+        });
         Mail::assertQueuedCount(1);
     }
 }
