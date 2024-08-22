@@ -2,7 +2,6 @@
 
 namespace DigiFactory\FilamentWildcardLogin\Mail;
 
-use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -12,7 +11,8 @@ use Illuminate\Queue\SerializesModels;
 
 class WildcardLogin extends Mailable implements ShouldQueue
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * Create a new message instance.

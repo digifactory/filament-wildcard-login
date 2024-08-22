@@ -2,7 +2,6 @@
 
 namespace Workbench\App\Providers\Filament;
 
-use App\Models\Organisation;
 use DigiFactory\FilamentWildcardLogin\FilamentWildcardLoginPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
