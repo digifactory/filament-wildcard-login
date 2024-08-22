@@ -2,6 +2,7 @@
 
 namespace DigiFactory\FilamentWildcardLogin;
 
+use Closure;
 use DigiFactory\FilamentWildcardLogin\Filament\Pages\Login;
 use Filament\Contracts\Plugin;
 use Filament\Panel;

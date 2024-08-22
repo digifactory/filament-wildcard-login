@@ -6,6 +6,7 @@ use DigiFactory\FilamentWildcardLogin\FilamentWildcardLoginPlugin;
 use DigiFactory\FilamentWildcardLogin\Mail\WildcardLogin;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Component;
+use Filament\Forms\Components\TextInput;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 use Filament\Notifications\Notification;
 use Filament\Pages\Auth\Login as BaseLogin;
@@ -67,7 +68,9 @@ class Login extends BaseLogin
 
     protected function getPasswordFormComponent(): Component
     {
-        return parent::getPasswordFormComponent()
-            ->required(false);
+        /** @var TextInput $passwordInput */
+        $passwordInput = parent::getPasswordFormComponent();
+
+        return $passwordInput->required(false);
     }
 }
