@@ -40,6 +40,11 @@ These methods are available on the `FilamentWildcardLoginPlugin` instance:
 | `model(string $modelClass, string $modelColumn = 'email')`        | This method allows you to define the used `User` model and column, by default the plugin users `App\Model\User` and `email`. |
 | `emailValidForMinutes(int $minutes)`                              | This method allows you to define after how many minutes the link in the e-mail should expire. The default is `5` minutes.    |
 
+## Preview
+
+![preview](https://raw.githubusercontent.com/digifactory/filament-wildcard-login/main/docs/preview.jpg)
+![preview-email](https://raw.githubusercontent.com/digifactory/filament-wildcard-login/main/docs/preview-email.jpg)
+
 ## Testing
 
 ```bash
