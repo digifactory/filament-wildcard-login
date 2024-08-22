@@ -1,4 +1,4 @@
-# Allow all e-mail addresses for a specific domain name to login to a generic account for that domain. 
+# Filament Wildcard Login 
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/digifactory/filament-wildcard-login.svg?style=flat-square)](https://packagist.org/packages/digifactory/filament-wildcard-login)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/digifactory/filament-wildcard-login/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/digifactory/filament-wildcard-login/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -6,8 +6,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/digifactory/filament-wildcard-login.svg?style=flat-square)](https://packagist.org/packages/digifactory/filament-wildcard-login)
 
 
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This package allows you to allow users with an e-mail address ending in specific domain names to login using an e-mail instead of using a password. After installing this package you can have a generic account (e.g. `helpdesk@digifactory.nl`) and everyone using a `@digifactory.nl` mail address can login using the e-mail sent directly to their inbox.
 
 ## Installation
 
@@ -17,32 +16,34 @@ You can install the package via composer:
 composer require digifactory/filament-wildcard-login
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="filament-wildcard-login-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="filament-wildcard-login-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
 ## Usage
 
+You can add the `FilamentWildcardLoginPlugin` to your Filament `Panel` like this:
+
 ```php
-$filamentWildcardLogin = new DigiFactory\FilamentWildcardLogin();
-echo $filamentWildcardLogin->echoPhrase('Hello, DigiFactory!');
+->plugins([
+    FilamentWildcardLoginPlugin::make()
+        ->domains([
+            'digifactory.nl',
+        ])
+        ->loginDirectlyWithoutSendingEmail(app()->environment('local')),
+])
 ```
+
+These methods are available on the `FilamentWildcardLoginPlugin` instance:
+
+| Method                                                            | Description                                                                                                                  |
+|-------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| `enabled(Closure \| bool $value = true)`                          | This method allows you to enable the plugin using a boolean or callback, by default the plugin is enabled.                   |
+| `loginDirectlyWithoutSendingEmail(Closure \| bool $value = true)` | This method allows you to enable direct login, without sending the e-mail. This can be handy for local development.          |
+| `domains(array $domains)`                                         | This method allows you to define the domains that can login using the e-mail link.                                           |
+| `model(string $modelClass, string $modelColumn = 'email')`        | This method allows you to define the used `User` model and column, by default the plugin users `App\Model\User` and `email`. |
+| `emailValidForMinutes(int $minutes)`                              | This method allows you to define after how many minutes the link in the e-mail should expire. The default is `5` minutes.    |
+
+## Preview
+
+![preview](https://raw.githubusercontent.com/digifactory/filament-wildcard-login/main/docs/preview.jpg)
+![preview-email](https://raw.githubusercontent.com/digifactory/filament-wildcard-login/main/docs/preview-email.jpg)
 
 ## Testing
 
