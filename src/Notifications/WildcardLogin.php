@@ -16,7 +16,7 @@ class WildcardLogin extends Notification implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(public string $loginUrl)
+    public function __construct(public string $loginUrl, public string $expiration)
     {
         //
     }
@@ -43,7 +43,7 @@ class WildcardLogin extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject(__('filament-wildcard-login::wildcard-login.mail.subject', ['application' => config('app.name')]))
             ->greeting(__('filament-wildcard-login::wildcard-login.mail.greeting'))
-            ->line(__('filament-wildcard-login::wildcard-login.mail.intro'))
+            ->line(__('filament-wildcard-login::wildcard-login.mail.intro', ['expiration' => $this->expiration]))
             ->action(__('filament-wildcard-login::wildcard-login.mail.button'), $this->loginUrl)
             ->salutation(__('filament-wildcard-login::wildcard-login.mail.salutation', ['application' => config('app.name')]));
     }

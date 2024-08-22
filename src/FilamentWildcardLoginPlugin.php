@@ -20,9 +20,11 @@ class FilamentWildcardLoginPlugin implements Plugin
      */
     protected array $domains = [];
 
-    public string $modelColumn = 'email';
+    protected string $modelColumn = 'email';
 
-    public string $modelClass = 'App\\Models\\User';
+    protected string $modelClass = 'App\\Models\\User';
+
+    protected int $emailValidForMinutes = 5;
 
     public function getId(): string
     {
@@ -109,5 +111,17 @@ class FilamentWildcardLoginPlugin implements Plugin
     public function getModelColumn(): string
     {
         return $this->modelColumn;
+    }
+
+    public function emailValidForMinutes(int $minutes): static
+    {
+        $this->emailValidForMinutes = $minutes;
+
+        return $this;
+    }
+
+    public function getEmailValidForMinutes(): int
+    {
+        return $this->emailValidForMinutes;
     }
 }
