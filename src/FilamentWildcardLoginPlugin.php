@@ -16,6 +16,8 @@ class FilamentWildcardLoginPlugin implements Plugin
 
     protected Closure | bool $loginDirectlyWithoutSendingEmail = false;
 
+    protected Closure | bool $allowAllDomains = false;
+
     /**
      * @var array<int, string>
      */
@@ -90,9 +92,21 @@ class FilamentWildcardLoginPlugin implements Plugin
         return $this;
     }
 
+    public function allowAllDomains(Closure | bool $value = true): static
+    {
+        $this->allowAllDomains = $value;
+
+        return $this;
+    }
+
     public function getDomains(): array
     {
         return $this->domains;
+    }
+
+    public function areAllDomainsAllowed(): bool
+    {
+        return $this->allowAllDomains;
     }
 
     public function model(string $modelClass, string $modelColumn = 'email'): static

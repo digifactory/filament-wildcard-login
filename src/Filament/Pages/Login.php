@@ -24,42 +24,50 @@ class Login extends BaseLogin
 
         if (isset($data['email']) && $plugin->isEnabled()) {
             $email = Str::of($data['email']);
+            $user = null;
 
-            if ($email->endsWith($plugin->getDomains())) {
+            if ($plugin->areAllDomainsAllowed()) {
+                $user = ($plugin->getModelClass())::query()
+                    ->where($plugin->getModelColumn(), '=', $email)
+                    ->first();
+            }
+
+            if (! $user && $email->endsWith($plugin->getDomains())) {
                 $domain = $email->afterLast('@');
 
                 $user = ($plugin->getModelClass())::query()
                     ->where($plugin->getModelColumn(), 'LIKE', '%' . $domain)
                     ->first();
+            }
 
-                if ($user) {
-                    if ($plugin->shouldLoginDirectlyWithoutSendingEmail()) {
-                        Filament::auth()->login($user);
+            if ($user) {
+                if ($plugin->shouldLoginDirectlyWithoutSendingEmail()) {
+                    Filament::auth()->login($user);
 
-                        session()->regenerate();
+                    session()->regenerate();
 
-                        return app(LoginResponse::class);
-                    } else {
-                        $expiration = now()->addMinutes($plugin->getEmailValidForMinutes());
+                    return app(LoginResponse::class);
+                } else {
+                    $expiration = now()->addMinutes($plugin->getEmailValidForMinutes());
 
-                        $loginUrl = URL::signedRoute(
-                            'filament-wildcard-login',
-                            ['user' => $user->id],
-                            $expiration,
-                        );
+                    $loginUrl = URL::signedRoute(
+                        'filament-wildcard-login',
+                        ['user' => $user->id],
+                        $expiration,
+                    );
 
-                        Mail::to($email->toString())
-                            ->send(new WildcardLogin($loginUrl, $expiration->isoFormat('D MMMM YYYY HH:mm:ss')));
+                    Mail::to($email->toString())
+                        ->send(new WildcardLogin($loginUrl, $expiration->isoFormat('D MMMM YYYY HH:mm:ss')));
 
-                        Notification::make()
-                            ->title(__('filament-wildcard-login::wildcard-login.notification.title', ['email' => $email]))
-                            ->body(__('filament-wildcard-login::wildcard-login.notification.body', ['expiration' => $plugin->getEmailValidForMinutes()]))
-                            ->success()
-                            ->send();
+                    Notification::make()
+                        ->title(__('filament-wildcard-login::wildcard-login.notification.title', ['email' => $email]))
+                        ->body(__('filament-wildcard-login::wildcard-login.notification.body', ['expiration' => $plugin->getEmailValidForMinutes()]))
+                        ->success()
+                        ->send();
 
-                        return null;
-                    }
+                    return null;
                 }
+
             }
         }
 
