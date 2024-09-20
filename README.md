@@ -8,6 +8,8 @@
 
 This package allows you to allow users with an e-mail address ending in specific domain names to login using an e-mail instead of using a password. After installing this package you can have a generic account (e.g. `helpdesk@digifactory.nl`) and everyone using a `@digifactory.nl` mail address can login using the e-mail sent directly to their inbox.
 
+Since v1.0.2 it is also possible to enable e-mail login for *all users*. When enabled (`$plugin->allowAllDomains()`) the plugin will look for that specific user/e-mail address instead of a specific domain. This option can be enabled on top of the base functionality of this package. 
+
 ## Installation
 
 You can install the package via composer:
@@ -39,6 +41,7 @@ These methods are available on the `FilamentWildcardLoginPlugin` instance:
 | `domains(array $domains)`                                         | This method allows you to define the domains that can login using the e-mail link.                                           |
 | `model(string $modelClass, string $modelColumn = 'email')`        | This method allows you to define the used `User` model and column, by default the plugin users `App\Model\User` and `email`. |
 | `emailValidForMinutes(int $minutes)`                              | This method allows you to define after how many minutes the link in the e-mail should expire. The default is `5` minutes.    |
+| `allowAllDomains(Closure \| bool $value = true)`                  | This method allows you to allow all e-mail address to login using an e-mail.                                                 |
 
 ## Preview
 
