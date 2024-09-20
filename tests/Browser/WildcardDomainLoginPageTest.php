@@ -25,14 +25,11 @@ use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 use Workbench\App\Models\User;
-use Workbench\App\Providers\Filament\AdminPanelProvider;
 use Workbench\App\Providers\Filament\AdminPanelWithWildcardDomainProvider;
 
 class WildcardDomainLoginPageTest extends TestCase
 {
     use DatabaseMigrations;
-
-
 
     protected function getPackageProviders($app)
     {
