@@ -56,7 +56,7 @@ class AdminPanelWithWildcardDomainProvider extends PanelProvider
             ->plugins([
                 FilamentWildcardLoginPlugin::make()
                     ->model(User::class)
-                    ->allowAllDomains()
+                    ->allowAllDomains(fn () => true)
                     ->loginDirectlyWithoutSendingEmail(app()->environment('local')),
             ])
             ->authMiddleware([

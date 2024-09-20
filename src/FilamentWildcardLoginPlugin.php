@@ -66,7 +66,7 @@ class FilamentWildcardLoginPlugin implements Plugin
 
     public function isEnabled(): bool
     {
-        return $this->enabled;
+        return $this->evaluate($this->enabled);
     }
 
     public function loginDirectlyWithoutSendingEmail(Closure | bool $value = true): static
@@ -78,7 +78,7 @@ class FilamentWildcardLoginPlugin implements Plugin
 
     public function shouldLoginDirectlyWithoutSendingEmail(): bool
     {
-        return $this->loginDirectlyWithoutSendingEmail;
+        return $this->evaluate($this->loginDirectlyWithoutSendingEmail);
     }
 
     /**
@@ -106,7 +106,7 @@ class FilamentWildcardLoginPlugin implements Plugin
 
     public function areAllDomainsAllowed(): bool
     {
-        return $this->allowAllDomains;
+        return $this->evaluate($this->allowAllDomains);
     }
 
     public function model(string $modelClass, string $modelColumn = 'email'): static
