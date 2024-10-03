@@ -6,8 +6,14 @@ use Illuminate\Routing\Middleware\ValidateSignature;
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 
+$wildcardLoginRoute = function () {
+    Route::get('filament-wildcard-login', WildcardLoginController::class)
+        ->name('filament-wildcard-login')
+        ->middleware(ValidateSignature::class);
+};
+
 Route::name('filament.')
-    ->group(function () {
+    ->group(function () use ($wildcardLoginRoute) {
         foreach (Filament::getPanels() as $panel) {
             /** @var Panel $panel */
             $panelId = $panel->getId();
@@ -22,7 +28,7 @@ Route::name('filament.')
                     ->middleware($panel->getMiddleware())
                     ->name("{$panelId}." . ((filled($domain) && (count($domains) > 1)) ? "{$domain}." : ''))
                     ->prefix($panel->getPath())
-                    ->group(function () use ($hasTenancy, $tenantDomain, $tenantRoutePrefix, $tenantSlugAttribute) {
+                    ->group(function () use ($hasTenancy, $tenantDomain, $tenantRoutePrefix, $tenantSlugAttribute, $wildcardLoginRoute) {
                         if ($hasTenancy) {
                             $routeGroup = app(RouteRegistrar::class);
 
@@ -43,15 +49,11 @@ Route::name('filament.')
                             }
 
                             $routeGroup
-                                ->group(function (): void {
-                                    Route::get('filament-wildcard-login', WildcardLoginController::class)
-                                        ->name('filament-wildcard-login')
-                                        ->middleware(ValidateSignature::class);
+                                ->group(function () use ($wildcardLoginRoute): void {
+                                    $wildcardLoginRoute();
                                 });
                         } else {
-                            Route::get('filament-wildcard-login', WildcardLoginController::class)
-                                ->name('filament-wildcard-login')
-                                ->middleware(ValidateSignature::class);
+                            $wildcardLoginRoute();
                         }
                     });
             }
