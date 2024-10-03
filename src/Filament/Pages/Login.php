@@ -41,10 +41,15 @@ class Login extends BaseLogin
                         return app(LoginResponse::class);
                     } else {
                         $expiration = now()->addMinutes($plugin->getEmailValidForMinutes());
+                        $parameters = ['user' => $user->id];
+
+                        if (Filament::getCurrentPanel()->hasTenancy()) {
+                            $parameters['tenant'] = Filament::getCurrentPanel()->getTenant(request()->getHost());
+                        }
 
                         $loginUrl = URL::signedRoute(
-                            'filament-wildcard-login',
-                            ['user' => $user->id],
+                            'filament.' . Filament::getCurrentPanel()->getId() . '.filament-wildcard-login',
+                            $parameters,
                             $expiration,
                         );
 
