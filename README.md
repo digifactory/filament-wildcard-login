@@ -8,7 +8,7 @@
 
 This package allows you to allow users with an e-mail address ending in specific domain names to login using an e-mail instead of using a password. After installing this package you can have a generic account (e.g. `helpdesk@digifactory.nl`) and everyone using a `@digifactory.nl` mail address can login using the e-mail sent directly to their inbox.
 
-Since v1.0.2 it is also possible to enable e-mail login for *all users*. When enabled (`$plugin->allowAllDomains()`) the plugin will look for that specific user/e-mail address instead of a specific domain. This option can be enabled on top of the base functionality of this package. 
+Since v1.0.3 it is also possible to enable e-mail login for *all users*. When enabled (`$plugin->allowAllDomains()`) the plugin will look for that specific user/e-mail address instead of a specific domain. This option can be enabled on top of the base functionality of this package. 
 
 ## Installation
 
