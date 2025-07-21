@@ -2,6 +2,22 @@
 
 All notable changes to `filament-wildcard-login` will be documented in this file.
 
+## v1.0.4 - 2025-07-21
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot[bot] in https://github.com/digifactory/filament-wildcard-login/pull/9
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot[bot] in https://github.com/digifactory/filament-wildcard-login/pull/10
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/digifactory/filament-wildcard-login/pull/11
+* Bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot[bot] in https://github.com/digifactory/filament-wildcard-login/pull/12
+* feat(lang): Add Portuguese (Brazil) translation by @douglaswp in https://github.com/digifactory/filament-wildcard-login/pull/13
+
+### New Contributors
+
+* @douglaswp made their first contribution in https://github.com/digifactory/filament-wildcard-login/pull/13
+
+**Full Changelog**: https://github.com/digifactory/filament-wildcard-login/compare/v1.0.3...v1.0.4
+
 ## v1.0.3 - 2024-12-30
 
 ### What's Changed
