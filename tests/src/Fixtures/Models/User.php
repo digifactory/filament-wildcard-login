@@ -1,6 +1,6 @@
 <?php
 
-namespace Workbench\App\Models;
+namespace DigiFactory\FilamentWildcardLogin\Tests\Fixtures\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Models\Contracts\FilamentUser;

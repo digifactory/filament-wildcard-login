@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DigiFactory\FilamentWildcardLogin\Tests;
 
+use DigiFactory\FilamentWildcardLogin\Tests\Fixtures\Providers\AdminPanelProvider;
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
 use DigiFactory\FilamentWildcardLogin\FilamentWildcardLoginServiceProvider;
@@ -10,32 +13,24 @@ use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
 use Filament\Infolists\InfolistsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
+use Filament\Schemas\SchemasServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
-use Workbench\App\Providers\Filament\AdminPanelProvider;
 
-class TestCase extends Orchestra
+abstract class TestCase extends Orchestra
 {
+    use LazilyRefreshDatabase;
     use WithWorkbench;
 
-    protected function setUp(): void
+    protected function getPackageProviders($app): array
     {
-        parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'DigiFactory\\FilamentWildcardLogin\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
-        );
-    }
-
-    protected function getPackageProviders($app)
-    {
-        return [
+        $providers = [
             ActionsServiceProvider::class,
             BladeCaptureDirectiveServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
@@ -45,21 +40,16 @@ class TestCase extends Orchestra
             InfolistsServiceProvider::class,
             LivewireServiceProvider::class,
             NotificationsServiceProvider::class,
+            SchemasServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
-            FilamentWildcardLoginServiceProvider::class,
             AdminPanelProvider::class,
+            FilamentWildcardLoginServiceProvider::class,
         ];
-    }
 
-    public function getEnvironmentSetUp($app)
-    {
-        config()->set('database.default', 'testing');
+        sort($providers);
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_filament-wildcard-login_table.php.stub';
-        $migration->up();
-        */
+        return $providers;
     }
 }

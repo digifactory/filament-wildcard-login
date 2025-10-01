@@ -21,45 +21,46 @@
     ],
     "require": {
         "php": "^8.3",
-        "filament/filament": "^3.0",
+        "filament/filament": "^4.0",
         "spatie/laravel-package-tools": "^1.15.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
-        "nunomaduro/collision": "^8.0.0",
-        "larastan/larastan": "^2.9",
-        "orchestra/testbench": "^9.0",
-        "pestphp/pest": "^2.1",
-        "pestphp/pest-plugin-arch": "^2.0",
-        "pestphp/pest-plugin-laravel": "^2.0",
-        "phpstan/extension-installer": "^1.1",
-        "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0"
+        "orchestra/testbench": "^9.0|^10.0",
+        "pestphp/pest": "^3.7",
+        "pestphp/pest-plugin-laravel": "^3.0",
+        "pestphp/pest-plugin-livewire": "^3.0",
+        "rector/rector": "^2.0",
+        "spatie/laravel-ray": "^1.29"
     },
     "autoload": {
         "psr-4": {
-            "DigiFactory\\FilamentWildcardLogin\\": "src/",
-            "DigiFactory\\FilamentWildcardLogin\\Database\\Factories\\": "database/factories/"
+            "DigiFactory\\FilamentWildcardLogin\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DigiFactory\\FilamentWildcardLogin\\Tests\\": "tests/",
+            "DigiFactory\\FilamentWildcardLogin\\Tests\\": "tests/src",
             "Workbench\\App\\": "workbench/app/"
         }
     },
     "scripts": {
-        "post-autoload-dump": [
-            "@php ./vendor/bin/testbench package:discover --ansi"
-        ],
-        "analyse": "vendor/bin/phpstan analyse",
-        "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "lint": "pint",
+        "refactor": "rector",
+        "test:lint": "pint --test",
+        "test:refactor": "rector --dry-run",
+        "test:unit": "pest",
+        "test": [
+            "@test:refactor",
+            "@test:lint",
+            "@test:unit"
+        ]
     },
     "config": {
         "sort-packages": true,
         "allow-plugins": {
+            "composer/package-versions-deprecated": true,
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true
         }
@@ -74,6 +75,6 @@
             }
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }

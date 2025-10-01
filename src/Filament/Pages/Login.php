@@ -4,12 +4,12 @@ namespace DigiFactory\FilamentWildcardLogin\Filament\Pages;
 
 use DigiFactory\FilamentWildcardLogin\FilamentWildcardLoginPlugin;
 use DigiFactory\FilamentWildcardLogin\Mail\WildcardLogin;
+use Filament\Auth\Http\Responses\Contracts\LoginResponse;
 use Filament\Facades\Filament;
-use Filament\Forms\Components\Component;
+use Filament\Schemas\Components\Component;
 use Filament\Forms\Components\TextInput;
-use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 use Filament\Notifications\Notification;
-use Filament\Pages\Auth\Login as BaseLogin;
+use Filament\Auth\Pages\Login as BaseLogin;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
