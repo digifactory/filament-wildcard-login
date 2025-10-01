@@ -52,8 +52,8 @@ it('can see notification when using wildcard email', function () {
                 ->domains([
                     'digifactory.nl',
                 ])
-                    ->model(User::class)
-                    ->loginDirectlyWithoutSendingEmail(app()->environment('local')),
+                ->model(User::class)
+                ->loginDirectlyWithoutSendingEmail(app()->environment('local')),
         ]);
 
     Filament::setCurrentPanel($this->panel);

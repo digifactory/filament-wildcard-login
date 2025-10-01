@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace DigiFactory\FilamentWildcardLogin\Tests;
 
-use DigiFactory\FilamentWildcardLogin\Tests\Fixtures\Providers\AdminPanelProvider;
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
 use DigiFactory\FilamentWildcardLogin\FilamentWildcardLoginServiceProvider;
+use DigiFactory\FilamentWildcardLogin\Tests\Fixtures\Providers\AdminPanelProvider;
 use Filament\Actions\ActionsServiceProvider;
 use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
