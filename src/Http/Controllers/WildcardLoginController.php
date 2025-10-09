@@ -3,8 +3,8 @@
 namespace DigiFactory\FilamentWildcardLogin\Http\Controllers;
 
 use DigiFactory\FilamentWildcardLogin\FilamentWildcardLoginPlugin;
+use Filament\Auth\Http\Responses\Contracts\LoginResponse;
 use Filament\Facades\Filament;
-use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 use Illuminate\Http\Request;
 
 class WildcardLoginController
