@@ -10,6 +10,11 @@ This package allows you to allow users with an e-mail address ending in specific
 
 Since v1.0.3 it is also possible to enable e-mail login for *all users*. When enabled (`$plugin->allowAllDomains()`) the plugin will look for that specific user/e-mail address instead of a specific domain. This option can be enabled on top of the base functionality of this package. 
 
+| Version | Filament version |
+| ------- | ---------------- |
+| v1.0    | v3.0             |
+| v2.0    | v4.0             |
+
 ## Installation
 
 You can install the package via composer:
