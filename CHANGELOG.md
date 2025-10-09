@@ -2,6 +2,16 @@
 
 All notable changes to `filament-wildcard-login` will be documented in this file.
 
+## v2.0.0 - 2025-10-09
+
+### What's Changed
+
+* Support for Filament v4 by @mrk-j in https://github.com/digifactory/filament-wildcard-login/pull/16
+* Bump aglipanci/laravel-pint-action from 2.5 to 2.6 by @dependabot[bot] in https://github.com/digifactory/filament-wildcard-login/pull/14
+* Bump actions/checkout from 4 to 5 by @dependabot[bot] in https://github.com/digifactory/filament-wildcard-login/pull/15
+
+**Full Changelog**: https://github.com/digifactory/filament-wildcard-login/compare/v1.0.4...v2.0.0
+
 ## v1.0.4 - 2025-07-21
 
 ### What's Changed
