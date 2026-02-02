@@ -28,7 +28,7 @@ it('can see password field is not required', function () {
     $component = Livewire::test(Login::class);
 
     $this->assertStringContainsString(
-        '<input            class="fi-input fi-revealable" autocomplete="current-password" id="form.password" wire:model="data.password" x-bind:type="isPasswordRevealed ? \'text\' : \'password\'" tabindex="2"        />',
+        '<input            class="fi-input fi-revealable" autocomplete="current-password" id="form.password" wire:model="data.password" x-bind:type="isPasswordRevealed ? \'text\' : \'password\'"        />',
         Str::of($component->html())->replace(PHP_EOL, '')->toString(),
     );
 });
