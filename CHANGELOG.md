@@ -2,6 +2,17 @@
 
 All notable changes to `filament-wildcard-login` will be documented in this file.
 
+## v3.0.0 - 2026-02-02
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.4.0 to 2.5.0 by @dependabot[bot] in https://github.com/digifactory/filament-wildcard-login/pull/19
+* Update to Filament 5 by @mrk-j in https://github.com/digifactory/filament-wildcard-login/pull/20
+* Bump actions/checkout from 5 to 6 by @dependabot[bot] in https://github.com/digifactory/filament-wildcard-login/pull/18
+* Bump stefanzweifel/git-auto-commit-action from 6 to 7 by @dependabot[bot] in https://github.com/digifactory/filament-wildcard-login/pull/17
+
+**Full Changelog**: https://github.com/digifactory/filament-wildcard-login/compare/v2.0.0...v3.0.0
+
 ## v2.0.0 - 2025-10-09
 
 ### What's Changed
