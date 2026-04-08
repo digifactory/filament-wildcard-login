@@ -14,6 +14,7 @@ Since v1.0.3 it is also possible to enable e-mail login for *all users*. When en
 | ------- | ---------------- |
 | v1.0    | v3.0             |
 | v2.0    | v4.0             |
+| v3.0    | v5.0             |
 
 ## Installation
 
