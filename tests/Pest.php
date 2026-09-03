@@ -1,7 +1,8 @@
 <?php
 
 declare(strict_types=1);
+use DigiFactory\FilamentWildcardLogin\Tests\TestCase;
 
 pest()
-    ->extend(DigiFactory\FilamentWildcardLogin\Tests\TestCase::class)
+    ->extend(TestCase::class)
     ->in('src/Feature');
