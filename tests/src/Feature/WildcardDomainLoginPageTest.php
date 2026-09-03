@@ -7,6 +7,7 @@ use DigiFactory\FilamentWildcardLogin\FilamentWildcardLoginPlugin;
 use DigiFactory\FilamentWildcardLogin\Mail\WildcardLogin;
 use DigiFactory\FilamentWildcardLogin\Tests\Fixtures\Models\User;
 use Filament\Facades\Filament;
+use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Livewire;
 
@@ -42,18 +43,12 @@ it('can see notification when using wildcard email', function () {
     $component->set('data.email', 'mark@digifactory.nl');
     $component->call('authenticate');
 
-    $notifications = session()->get('filament.notifications');
-
-    expect($notifications)
-        ->toBeArray()
-        ->toHaveCount(1);
-
-    $notification = Arr::last($notifications);
-
-    expect($notification)
-        ->toBeArray()
-        ->body->toBe('This e-mail is valid for 5 minutes.')
-        ->title->toBe('Login link sent to mark@digifactory.nl!');
+    $component->assertNotified(
+        Notification::make()
+            ->success()
+            ->title('Login link sent to mark@digifactory.nl!')
+            ->body('This e-mail is valid for 5 minutes.')
+    );
 
     Mail::assertQueued(WildcardLogin::class, function (WildcardLogin $mail) {
         return expect($mail)
